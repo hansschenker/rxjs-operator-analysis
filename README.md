@@ -62,9 +62,10 @@ Edge-label convention throughout is standard Mealy notation: **`input / output`*
 | 12 | **Flattening family** (12): `mergeMap`/`mergeMapTo`/`mergeAll`, `concatMap`/`concatMapTo`/`concatAll`, `switchMap`/`switchMapTo`/`switchAll`, `exhaustMap`/`exhaust`/`exhaustAll` | one Mealy skeleton (inner-subscription bookkeeping) parameterised by four δ policies: run / queue / cancel / drop | [docs/12-flattening-family.md](docs/12-flattening-family.md) | [tests/49–54](tests/) |
 | 13 | **Combination family** (14): `combineLatest`/`combineLatestWith`/`combineLatestAll`/`combineAll`, `zip`/`zipWith`/`zipAll`, `concat`/`concatWith`, `merge`/`mergeWith`, `race`/`raceWith`, `withLatestFrom` (revisit) | N input alphabets: latest-value slots, per-source queues, sequential/interleave, and a winner-lock | [docs/13-combination-family.md](docs/13-combination-family.md) | [tests/55–59](tests/) |
 | 14 | **Time-based family** (16): `delay`/`delayWhen`, `sampleTime`/`sample`, `auditTime`/`audit`, `throttle`/`debounce`, `bufferTime`/`windowTime`, `timestamp`/`timeInterval`, `timeout`/`timeoutWith`, `observeOn`/`subscribeOn` | the `tick` input symbol at scale: fixed delay, snapshot-on-tick, lead/trail silence windows, time buffering, metadata tagging, watchdog, and scheduling | [docs/14-time-family.md](docs/14-time-family.md) | [tests/60–67](tests/) |
+| 15 | **Buffering & windowing family** (9): `buffer`/`bufferWhen`/`bufferToggle`, `window`/`windowCount`/`windowWhen`/`windowToggle`, `groupBy`, `expand` | accumulate-then-flush on a boundary; the buffer→array / window→Observable duality; overlapping buffers; keyed partition; recursive `mergeMap` | [docs/15-buffering-windowing-family.md](docs/15-buffering-windowing-family.md) | [tests/68–73](tests/) |
 
 See [docs/00-roadmap.md](docs/00-roadmap.md) for the full 10-session plan
-covering all 116 public RxJS 7.x operators.
+covering all public RxJS 7.x operators.
 
 The four span a deliberate difficulty gradient:
 
@@ -85,8 +86,8 @@ npm test            # single run
 npm run test:watch  # watch mode
 ```
 
-All rows across all analyzed operators: **237 passing marble tests** (90
-operators; sessions 1–8 of the 10-session roadmap).
+All rows across all analyzed operators: **251 passing marble tests** (96
+operators; sessions 1–9 of the 10-session roadmap — 17 remain for session 10).
 
 ## Methodology lesson: let the machine validate the model
 

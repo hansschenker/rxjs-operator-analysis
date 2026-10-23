@@ -28,9 +28,13 @@ shared state-machine shape.
 - [x] **Session 6** — Higher-order flattening — *12 operators* — DONE
 - [x] **Session 7** — Combination operators — *14 operators* — DONE
 - [x] **Session 8** — Time-based operators — *16 operators* — DONE
-- [ ] Sessions 9–10 — see below — *26 operators remaining*
+- [x] **Session 9** — Buffering & windowing — *9 operators* — DONE
+- [ ] Session 10 — see below — *17 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 26 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 9 + 17 = **116**
+tickets, covering the **113** distinct public operator files (a few names —
+`withLatestFrom`, `scan` seedless — are cross-session revisits, not separate
+files; and the deprecated `flatMap` alias of `mergeMap` is picked up in S10).
 
 ---
 
@@ -112,19 +116,22 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 26 = **116**.
 > *Time variants. `timeout` is a watchdog-timer FSM. See
 > [docs/14-time-family.md](14-time-family.md).
 
-## Session 9 — Buffering & windowing (10)
+## Session 9 — Buffering & windowing (9) — DONE
 
 `buffer`, `bufferToggle`, `bufferWhen`, `window`, `windowCount`, `windowToggle`,
-`windowWhen`, `groupBy`, `expand`, `delayWhen` *(if not reached in S8)*
+`windowWhen`, `groupBy`, `expand`
+(`delayWhen` was covered in Session 8.)
 
 > Accumulate-then-flush state driven by a boundary notifier. `window*` emit
 > nested observables; `groupBy` maintains a map of key→subject; `expand` is
-> recursive mergeMap.
+> recursive mergeMap. See
+> [docs/15-buffering-windowing-family.md](15-buffering-windowing-family.md).
 
-## Session 10 — Error handling, repetition & multicasting (12)
+## Session 10 — Error handling, repetition & multicasting (17)
 
 `catchError`, `retry`, `retryWhen`, `repeat`, `repeatWhen`,
-`onErrorResumeNextWith`, `finalize`, `share`, `shareReplay`, `connect`,
+`onErrorResumeNextWith`, `finalize`, `flatMap` (mergeMap alias), `share`,
+`shareReplay`, `connect`,
 `multicast`, `publish` / `publishBehavior` / `publishLast` / `publishReplay` /
 `refCount`
 
@@ -145,7 +152,7 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (90):**
+**Done (96):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -166,6 +173,10 @@ Ticked as each is completed. (S1–S2 done.)
 - *S8:* delay ✅, delayWhen ✅, sampleTime ✅, sample ✅, auditTime ✅, audit ✅,
   debounce ✅, throttle ✅, bufferTime ✅, windowTime ✅, timeInterval ✅,
   timestamp ✅, timeout ✅, timeoutWith ✅, observeOn ✅, subscribeOn ✅
+- *S9:* buffer ✅, bufferToggle ✅, bufferWhen ✅, window ✅, windowCount ✅,
+  windowToggle ✅, windowWhen ✅, groupBy ✅, expand ✅
 
-**Remaining (26):** see sessions 9–10 above. Each session's doc will tick its
-operators here as they land.
+**Remaining (17):** see session 10 above — catchError, retry, retryWhen,
+repeat, repeatWhen, onErrorResumeNextWith, finalize, flatMap, share,
+shareReplay, connect, multicast, publish, publishBehavior, publishLast,
+publishReplay, refCount.
