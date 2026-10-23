@@ -21,10 +21,11 @@ shared state-machine shape.
 ## Progress
 
 - [x] **Session 1** — Foundations (stateful & time) — *4 operators* — DONE
-- [x] **Session 2 (today)** — Tuples, buffering & dual-source — *4 operators* — DONE
-- [ ] Sessions 3–10 — see below — *108 operators remaining*
+- [x] **Session 2** — Tuples, buffering & dual-source — *4 operators* — DONE
+- [x] **Session 3** — Transformation / map family — *12 operators* — DONE
+- [ ] Sessions 4–10 — see below — *96 operators remaining*
 
-Running total when complete: 4 + 4 + 108 = **116**.
+Running total when complete: 4 + 4 + 12 + 96 = **116**.
 
 ---
 
@@ -45,14 +46,15 @@ Running total when complete: 4 + 4 + 108 = **116**.
 
 ---
 
-## Session 3 — Transformation (stateless & lightly-stateful map family) (12)
+## Session 3 — Transformation (stateless & lightly-stateful map family) (12) — DONE
 
-`map`, `mapTo`, `pluck`, `filter`, `tap`, `scan` *(revisit seedless)*, `reduce`,
+`map`, `mapTo`, `pluck`, `filter`, `tap`, `scan` *(seedless)*, `reduce`,
 `mergeScan`, `switchScan`, `partition`, `materialize`, `dematerialize`
 
 > The simplest Mealy machines: mostly one operational state, output on every
 > `next`. `reduce` is the "emit only on complete" cousin of `scan`.
-> materialize/dematerialize reify Σ↔Λ notifications themselves.
+> materialize/dematerialize reify Σ↔Λ notifications themselves. See
+> [docs/09-transformation-family.md](09-transformation-family.md).
 
 ## Session 4 — Filtering & conditional emission (14)
 
@@ -134,8 +136,12 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (8):** scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅,
-throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
+**Done (20):**
+- *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
+- *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
+- *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
+  reduce ✅, mergeScan ✅, switchScan ✅, partition ✅, materialize ✅,
+  dematerialize ✅
 
-**Remaining (108):** see sessions 3–10 above. Each session's doc will tick its
+**Remaining (96):** see sessions 4–10 above. Each session's doc will tick its
 operators here as they land.

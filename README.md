@@ -56,6 +56,7 @@ Edge-label convention throughout is standard Mealy notation: **`input / output`*
 | 6 | `pairwise`              | two-state bootstrap; output is a tuple      | [docs/06-pairwise.md](docs/06-pairwise.md) | [tests/06-pairwise.test.ts](tests/06-pairwise.test.ts) |
 | 7 | `bufferCount`           | counter-parameterized modulo buffer         | [docs/07-bufferCount.md](docs/07-bufferCount.md) | [tests/07-bufferCount.test.ts](tests/07-bufferCount.test.ts) |
 | 8 | `withLatestFrom`        | two input alphabets; latch latest-other     | [docs/08-withLatestFrom.md](docs/08-withLatestFrom.md) | [tests/08-withLatestFrom.test.ts](tests/08-withLatestFrom.test.ts) |
+| 9 | **Transformation family** (12): `map`, `mapTo`, `pluck`, `filter`, `tap`, `scan` seedless, `reduce`, `mergeScan`, `switchScan`, `partition`, `materialize`, `dematerialize` | single-state projectors, accumulators, higher-order scans, and notification reification | [docs/09-transformation-family.md](docs/09-transformation-family.md) | [tests/09–20](tests/) |
 
 See [docs/00-roadmap.md](docs/00-roadmap.md) for the full 10-session plan
 covering all 116 public RxJS 7.x operators.
@@ -79,8 +80,8 @@ npm test            # single run
 npm run test:watch  # watch mode
 ```
 
-All rows across all analyzed operators: **48 passing marble tests** (8 operators;
-sessions 1–2 of the 10-session roadmap).
+All rows across all analyzed operators: **85 passing marble tests** (20
+operators; sessions 1–3 of the 10-session roadmap).
 
 ## Methodology lesson: let the machine validate the model
 
