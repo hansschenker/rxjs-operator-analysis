@@ -25,9 +25,10 @@ shared state-machine shape.
 - [x] **Session 3** — Transformation / map family — *12 operators* — DONE
 - [x] **Session 4** — Filtering & conditional emission — *14 operators* — DONE
 - [x] **Session 5** — Distinctness, existence & aggregation — *14 operators* — DONE
-- [ ] Sessions 6–10 — see below — *68 operators remaining*
+- [x] **Session 6** — Higher-order flattening — *12 operators* — DONE
+- [ ] Sessions 7–10 — see below — *56 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 14 + 14 + 68 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 56 = **116**.
 
 ---
 
@@ -78,14 +79,15 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 68 = **116**.
 > and emit-on-complete reducers. `sequenceEqual` tracks two queues. See
 > [docs/11-aggregation-family.md](11-aggregation-family.md).
 
-## Session 6 — Higher-order flattening: map/all family (12)
+## Session 6 — Higher-order flattening: map/all family (12) — DONE
 
 `mergeMap`, `mergeMapTo`, `mergeAll`, `concatMap`, `concatMapTo`, `concatAll`,
 `switchMap`, `switchMapTo`, `switchAll`, `exhaustMap`, `exhaust`, `exhaustAll`
 
 > Inner-subscription bookkeeping as state: a set of active inners (merge),
 > a queue (concat), a single replaceable inner (switch), a busy flag (exhaust).
-> The four flattening strategies are four distinct δ policies.
+> The four flattening strategies are four distinct δ policies. See
+> [docs/12-flattening-family.md](12-flattening-family.md).
 
 ## Session 7 — Combination operators (14)
 
@@ -140,7 +142,7 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (48):**
+**Done (60):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -152,6 +154,9 @@ Ticked as each is completed. (S1–S2 done.)
 - *S5:* distinct ✅, distinctUntilKeyChanged ✅, count ✅, every ✅, find ✅,
   findIndex ✅, isEmpty ✅, max ✅, min ✅, toArray ✅, sequenceEqual ✅,
   throwIfEmpty ✅, endWith ✅, startWith ✅
+- *S6:* mergeMap ✅, mergeMapTo ✅, mergeAll ✅, concatMap ✅, concatMapTo ✅,
+  concatAll ✅, switchMap ✅, switchMapTo ✅, switchAll ✅, exhaustMap ✅,
+  exhaust ✅, exhaustAll ✅
 
-**Remaining (68):** see sessions 6–10 above. Each session's doc will tick its
+**Remaining (56):** see sessions 7–10 above. Each session's doc will tick its
 operators here as they land.
