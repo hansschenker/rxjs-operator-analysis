@@ -52,6 +52,13 @@ Edge-label convention throughout is standard Mealy notation: **`input / output`*
 | 2 | `distinctUntilChanged`  | last emitted value `p` + bootstrap          | [docs/02-distinctUntilChanged.md](docs/02-distinctUntilChanged.md) | [tests/02-distinctUntilChanged.test.ts](tests/02-distinctUntilChanged.test.ts) |
 | 3 | `debounceTime`          | pending value + armed silence timer         | [docs/03-debounceTime.md](docs/03-debounceTime.md) | [tests/03-debounceTime.test.ts](tests/03-debounceTime.test.ts) |
 | 4 | `throttleTime`          | gate open / throttle window                 | [docs/04-throttleTime.md](docs/04-throttleTime.md) | [tests/04-throttleTime.test.ts](tests/04-throttleTime.test.ts) |
+| 5 | `throttleTime` *(trailing: true)* | window carries a pending value; emit-on-tick edge | [docs/05-throttleTime-trailing.md](docs/05-throttleTime-trailing.md) | [tests/05-throttleTime-trailing.test.ts](tests/05-throttleTime-trailing.test.ts) |
+| 6 | `pairwise`              | two-state bootstrap; output is a tuple      | [docs/06-pairwise.md](docs/06-pairwise.md) | [tests/06-pairwise.test.ts](tests/06-pairwise.test.ts) |
+| 7 | `bufferCount`           | counter-parameterized modulo buffer         | [docs/07-bufferCount.md](docs/07-bufferCount.md) | [tests/07-bufferCount.test.ts](tests/07-bufferCount.test.ts) |
+| 8 | `withLatestFrom`        | two input alphabets; latch latest-other     | [docs/08-withLatestFrom.md](docs/08-withLatestFrom.md) | [tests/08-withLatestFrom.test.ts](tests/08-withLatestFrom.test.ts) |
+
+See [docs/00-roadmap.md](docs/00-roadmap.md) for the full 10-session plan
+covering all 116 public RxJS 7.x operators.
 
 The four span a deliberate difficulty gradient:
 
@@ -72,7 +79,8 @@ npm test            # single run
 npm run test:watch  # watch mode
 ```
 
-All rows across all four operators: **26 passing marble tests.**
+All rows across all analyzed operators: **48 passing marble tests** (8 operators;
+sessions 1–2 of the 10-session roadmap).
 
 ## Methodology lesson: let the machine validate the model
 
