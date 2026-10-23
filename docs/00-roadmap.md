@@ -24,9 +24,10 @@ shared state-machine shape.
 - [x] **Session 2** — Tuples, buffering & dual-source — *4 operators* — DONE
 - [x] **Session 3** — Transformation / map family — *12 operators* — DONE
 - [x] **Session 4** — Filtering & conditional emission — *14 operators* — DONE
-- [ ] Sessions 5–10 — see below — *82 operators remaining*
+- [x] **Session 5** — Distinctness, existence & aggregation — *14 operators* — DONE
+- [ ] Sessions 6–10 — see below — *68 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 14 + 82 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 14 + 68 = **116**.
 
 ---
 
@@ -67,14 +68,15 @@ Running total when complete: 4 + 4 + 12 + 14 + 82 = **116**.
 > canonical counting FSM). `takeUntil`/`skipUntil` add a notifier input symbol.
 > See [docs/10-filtering-family.md](10-filtering-family.md).
 
-## Session 5 — Distinctness, existence & aggregation (14)
+## Session 5 — Distinctness, existence & aggregation (14) — DONE
 
 `distinct`, `distinctUntilKeyChanged`, `count`, `every`, `find`, `findIndex`,
 `isEmpty`, `max`, `min`, `toArray`, `sequenceEqual`, `throwIfEmpty`,
 `endWith`, `startWith`
 
 > Set-membership state (`distinct` keeps a seen-set), running-aggregate state,
-> and emit-on-complete reducers. `sequenceEqual` tracks two queues.
+> and emit-on-complete reducers. `sequenceEqual` tracks two queues. See
+> [docs/11-aggregation-family.md](11-aggregation-family.md).
 
 ## Session 6 — Higher-order flattening: map/all family (12)
 
@@ -138,7 +140,7 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (34):**
+**Done (48):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -147,6 +149,9 @@ Ticked as each is completed. (S1–S2 done.)
 - *S4:* take ✅, takeLast ✅, takeWhile ✅, takeUntil ✅, skip ✅, skipLast ✅,
   skipWhile ✅, skipUntil ✅, first ✅, last ✅, elementAt ✅, single ✅,
   ignoreElements ✅, defaultIfEmpty ✅
+- *S5:* distinct ✅, distinctUntilKeyChanged ✅, count ✅, every ✅, find ✅,
+  findIndex ✅, isEmpty ✅, max ✅, min ✅, toArray ✅, sequenceEqual ✅,
+  throwIfEmpty ✅, endWith ✅, startWith ✅
 
-**Remaining (82):** see sessions 5–10 above. Each session's doc will tick its
+**Remaining (68):** see sessions 6–10 above. Each session's doc will tick its
 operators here as they land.
