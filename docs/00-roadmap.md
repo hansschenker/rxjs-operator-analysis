@@ -27,9 +27,10 @@ shared state-machine shape.
 - [x] **Session 5** — Distinctness, existence & aggregation — *14 operators* — DONE
 - [x] **Session 6** — Higher-order flattening — *12 operators* — DONE
 - [x] **Session 7** — Combination operators — *14 operators* — DONE
-- [ ] Sessions 8–10 — see below — *42 operators remaining*
+- [x] **Session 8** — Time-based operators — *16 operators* — DONE
+- [ ] Sessions 9–10 — see below — *26 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 42 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 26 = **116**.
 
 ---
 
@@ -100,7 +101,7 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 42 = **116**.
 > per-source queues (zip), or a winner-lock (race). Generalizes session 2's
 > `withLatestFrom`. See [docs/13-combination-family.md](13-combination-family.md).
 
-## Session 8 — Time-based operators (16)
+## Session 8 — Time-based operators (16) — DONE
 
 `delay`, `delayWhen`, `sampleTime`, `sample`, `auditTime`, `audit`,
 `debounce`, `throttle`, `bufferTime`, `windowTime`, `timeInterval`, `timestamp`,
@@ -108,7 +109,8 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 42 = **116**.
 
 > All reuse the `tick` input symbol from session 1. `debounce`/`throttle`/
 > `audit`/`sample` are the durationSelector-driven generalizations of the
-> *Time variants. `timeout` is a watchdog-timer FSM.
+> *Time variants. `timeout` is a watchdog-timer FSM. See
+> [docs/14-time-family.md](14-time-family.md).
 
 ## Session 9 — Buffering & windowing (10)
 
@@ -143,7 +145,7 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (74):**
+**Done (90):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -161,6 +163,9 @@ Ticked as each is completed. (S1–S2 done.)
 - *S7:* combineLatest ✅, combineLatestWith ✅, combineLatestAll ✅, combineAll ✅,
   withLatestFrom ✅ (S2), zip ✅, zipWith ✅, zipAll ✅, concat ✅, concatWith ✅,
   merge ✅, mergeWith ✅, race ✅, raceWith ✅
+- *S8:* delay ✅, delayWhen ✅, sampleTime ✅, sample ✅, auditTime ✅, audit ✅,
+  debounce ✅, throttle ✅, bufferTime ✅, windowTime ✅, timeInterval ✅,
+  timestamp ✅, timeout ✅, timeoutWith ✅, observeOn ✅, subscribeOn ✅
 
-**Remaining (42):** see sessions 8–10 above. Each session's doc will tick its
+**Remaining (26):** see sessions 9–10 above. Each session's doc will tick its
 operators here as they land.
