@@ -1,0 +1,94 @@
+# RxJS Operators as Mealy Machines
+
+> **Main contributor: [Kiro](https://kiro.dev).** This project — the 6-tuple
+> analyses, the State Transition Diagrams and Tables, and the derived marble
+> test suites — was authored by Kiro, the AI software engineer, in
+> collaboration with the repository owner.
+
+Modeling RxJS operator behavior as **Mealy machines** using the **6-tuple
+analysis method**, then mechanically deriving:
+
+1. a **State Transition Diagram (STD)** — the visual state machine, and
+2. a **State Transition Table (STT)** — one row per transition, where
+3. **each STT row becomes a test case** — verified with the RxJS
+   `TestScheduler` and marble syntax.
+
+## Why a Mealy machine (and not Moore)?
+
+In a **Mealy** machine the output is a function of **(current state × input)** —
+the output is produced **on the transition (edge)**. In a **Moore** machine the
+output is a function of the state alone (output on the node).
+
+RxJS operators are naturally Mealy: a single input notification
+(`next`/`complete`/`error`) both changes internal state **and** produces an
+output notification **in the same step**. e.g. `scan` receives `next(v)` and, on
+that same edge, emits the new accumulation.
+
+## The 6-tuple  M = (Q, Σ, Λ, δ, λ, q₀)
+
+| Symbol | Meaning                 | RxJS mapping                                            |
+|--------|-------------------------|---------------------------------------------------------|
+| **Q**  | States                  | Internal operator memory (accumulator, last value, timer status) |
+| **Σ**  | Input alphabet          | Source notifications: `next(v)`, `complete`, `error` — plus `tick` for time-based operators |
+| **Λ**  | Output alphabet         | Downstream notifications: `emit(v)`, `complete`, `error`, or `noop` |
+| **δ**  | Transition fn `Q×Σ → Q` | How internal state changes                              |
+| **λ**  | Output fn `Q×Σ → Λ`     | What is emitted on that transition (the Mealy part)     |
+| **q₀** | Initial state           | State at subscription time                              |
+
+## The pipeline
+
+```
+6-tuple analysis  ──►  STD (Mermaid)  ──►  STT (table)  ──►  marble test per row
+   (docs/*.md)          (docs/*.md)         (docs/*.md)        (tests/*.test.ts)
+```
+
+Edge-label convention throughout is standard Mealy notation: **`input / output`**.
+
+## Operators analyzed
+
+| # | Operator                | State essence                               | Doc | Tests |
+|---|-------------------------|---------------------------------------------|-----|-------|
+| 1 | `scan`                  | running accumulator `(acc, i)`              | [docs/01-scan.md](docs/01-scan.md) | [tests/01-scan.test.ts](tests/01-scan.test.ts) |
+| 2 | `distinctUntilChanged`  | last emitted value `p` + bootstrap          | [docs/02-distinctUntilChanged.md](docs/02-distinctUntilChanged.md) | [tests/02-distinctUntilChanged.test.ts](tests/02-distinctUntilChanged.test.ts) |
+| 3 | `debounceTime`          | pending value + armed silence timer         | [docs/03-debounceTime.md](docs/03-debounceTime.md) | [tests/03-debounceTime.test.ts](tests/03-debounceTime.test.ts) |
+| 4 | `throttleTime`          | gate open / throttle window                 | [docs/04-throttleTime.md](docs/04-throttleTime.md) | [tests/04-throttleTime.test.ts](tests/04-throttleTime.test.ts) |
+
+The four span a deliberate difficulty gradient:
+
+- **`scan`** — minimal state, output on every input (purest Mealy self-loop).
+- **`distinctUntilChanged`** — a genuine *bootstrap* state (`S0`) plus a
+  *guarded* transition (the comparator), so two rows share an input symbol and
+  differ only by guard. FSM coverage then demands one guard-true and one
+  guard-false test.
+- **`debounceTime`** / **`throttleTime`** — **time becomes an input symbol**
+  (`tick`). They are duals: debounce emits *on the timer firing*, throttle emits
+  *on the leading value* and the timer firing is silent (default config).
+
+## Running the tests
+
+```bash
+npm install
+npm test            # single run
+npm run test:watch  # watch mode
+```
+
+All rows across all four operators: **26 passing marble tests.**
+
+## Methodology lesson: let the machine validate the model
+
+The `debounceTime` STT claims two different emit paths:
+
+- **Row 3** — the silence timer fires `d` ms after the last value (a `tick`).
+- **Row 5** — the source *completes* while a value is pending, which flushes it
+  **immediately at the completion frame** (a short-circuit).
+
+Writing the tests surfaced a trap: if the marble source completes *before* `d`
+ms of silence elapses (e.g. `-a|`), Row 5 fires and the natural Row-3 tick
+**never happens** — and the flush lands on the *completion* frame, not `d` ms
+after the value. The first draft of the tests encoded the wrong frames; the
+`TestScheduler` rejected them with exact frame numbers, which is precisely how
+an executable Mealy model keeps the hand-written STT honest. To actually
+exercise Row 3 you must leave a real silent gap `>= d` after the last value.
+
+This is the core payoff of the method: **a command exiting 0 is not proof of
+correctness — the assertion on exact emission frames is.**
