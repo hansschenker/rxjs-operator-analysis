@@ -60,6 +60,7 @@ Edge-label convention throughout is standard Mealy notation: **`input / output`*
 | 10 | **Filtering family** (14): `take`, `takeLast`, `takeWhile`, `takeUntil`, `skip`, `skipLast`, `skipWhile`, `skipUntil`, `first`, `last`, `elementAt`, `single`, `ignoreElements`, `defaultIfEmpty` | counting FSMs, predicate latches, notifier-driven cutoffs, and existence machines (4-outcome `single`) | [docs/10-filtering-family.md](docs/10-filtering-family.md) | [tests/21–34](tests/) |
 | 11 | **Aggregation family** (14): `distinct`, `distinctUntilKeyChanged`, `every`, `find`, `findIndex`, `isEmpty`, `count`, `max`, `min`, `toArray`, `sequenceEqual`, `throwIfEmpty`, `startWith`, `endWith` | seen-set distinctness, short-circuit existence quantifiers, emit-on-complete folds (dual-queue `sequenceEqual`), and prepend/append bracketing | [docs/11-aggregation-family.md](docs/11-aggregation-family.md) | [tests/35–48](tests/) |
 | 12 | **Flattening family** (12): `mergeMap`/`mergeMapTo`/`mergeAll`, `concatMap`/`concatMapTo`/`concatAll`, `switchMap`/`switchMapTo`/`switchAll`, `exhaustMap`/`exhaust`/`exhaustAll` | one Mealy skeleton (inner-subscription bookkeeping) parameterised by four δ policies: run / queue / cancel / drop | [docs/12-flattening-family.md](docs/12-flattening-family.md) | [tests/49–54](tests/) |
+| 13 | **Combination family** (14): `combineLatest`/`combineLatestWith`/`combineLatestAll`/`combineAll`, `zip`/`zipWith`/`zipAll`, `concat`/`concatWith`, `merge`/`mergeWith`, `race`/`raceWith`, `withLatestFrom` (revisit) | N input alphabets: latest-value slots, per-source queues, sequential/interleave, and a winner-lock | [docs/13-combination-family.md](docs/13-combination-family.md) | [tests/55–59](tests/) |
 
 See [docs/00-roadmap.md](docs/00-roadmap.md) for the full 10-session plan
 covering all 116 public RxJS 7.x operators.
@@ -83,8 +84,8 @@ npm test            # single run
 npm run test:watch  # watch mode
 ```
 
-All rows across all analyzed operators: **200 passing marble tests** (60
-operators; sessions 1–6 of the 10-session roadmap).
+All rows across all analyzed operators: **216 passing marble tests** (74
+operators; sessions 1–7 of the 10-session roadmap).
 
 ## Methodology lesson: let the machine validate the model
 

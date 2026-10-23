@@ -26,9 +26,10 @@ shared state-machine shape.
 - [x] **Session 4** — Filtering & conditional emission — *14 operators* — DONE
 - [x] **Session 5** — Distinctness, existence & aggregation — *14 operators* — DONE
 - [x] **Session 6** — Higher-order flattening — *12 operators* — DONE
-- [ ] Sessions 7–10 — see below — *56 operators remaining*
+- [x] **Session 7** — Combination operators — *14 operators* — DONE
+- [ ] Sessions 8–10 — see below — *42 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 56 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 42 = **116**.
 
 ---
 
@@ -89,7 +90,7 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 56 = **116**.
 > The four flattening strategies are four distinct δ policies. See
 > [docs/12-flattening-family.md](12-flattening-family.md).
 
-## Session 7 — Combination operators (14)
+## Session 7 — Combination operators (14) — DONE
 
 `combineLatest`, `combineLatestAll`, `combineLatestWith`, `combineAll`,
 `withLatestFrom` *(revisit)*, `zip`, `zipAll`, `zipWith`, `concat`, `concatWith`,
@@ -97,7 +98,7 @@ Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 56 = **116**.
 
 > Multiple input alphabets. State = latest-value slots (combineLatest),
 > per-source queues (zip), or a winner-lock (race). Generalizes session 2's
-> `withLatestFrom`.
+> `withLatestFrom`. See [docs/13-combination-family.md](13-combination-family.md).
 
 ## Session 8 — Time-based operators (16)
 
@@ -142,7 +143,7 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (60):**
+**Done (74):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -157,6 +158,9 @@ Ticked as each is completed. (S1–S2 done.)
 - *S6:* mergeMap ✅, mergeMapTo ✅, mergeAll ✅, concatMap ✅, concatMapTo ✅,
   concatAll ✅, switchMap ✅, switchMapTo ✅, switchAll ✅, exhaustMap ✅,
   exhaust ✅, exhaustAll ✅
+- *S7:* combineLatest ✅, combineLatestWith ✅, combineLatestAll ✅, combineAll ✅,
+  withLatestFrom ✅ (S2), zip ✅, zipWith ✅, zipAll ✅, concat ✅, concatWith ✅,
+  merge ✅, mergeWith ✅, race ✅, raceWith ✅
 
-**Remaining (56):** see sessions 7–10 above. Each session's doc will tick its
+**Remaining (42):** see sessions 8–10 above. Each session's doc will tick its
 operators here as they land.
