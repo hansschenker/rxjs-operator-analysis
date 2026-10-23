@@ -23,9 +23,10 @@ shared state-machine shape.
 - [x] **Session 1** — Foundations (stateful & time) — *4 operators* — DONE
 - [x] **Session 2** — Tuples, buffering & dual-source — *4 operators* — DONE
 - [x] **Session 3** — Transformation / map family — *12 operators* — DONE
-- [ ] Sessions 4–10 — see below — *96 operators remaining*
+- [x] **Session 4** — Filtering & conditional emission — *14 operators* — DONE
+- [ ] Sessions 5–10 — see below — *82 operators remaining*
 
-Running total when complete: 4 + 4 + 12 + 96 = **116**.
+Running total when complete: 4 + 4 + 12 + 14 + 82 = **116**.
 
 ---
 
@@ -56,7 +57,7 @@ Running total when complete: 4 + 4 + 12 + 96 = **116**.
 > materialize/dematerialize reify Σ↔Λ notifications themselves. See
 > [docs/09-transformation-family.md](09-transformation-family.md).
 
-## Session 4 — Filtering & conditional emission (14)
+## Session 4 — Filtering & conditional emission (14) — DONE
 
 `take`, `takeLast`, `takeWhile`, `takeUntil`, `skip`, `skipLast`, `skipWhile`,
 `skipUntil`, `first`, `last`, `elementAt`, `single`, `ignoreElements`,
@@ -64,6 +65,7 @@ Running total when complete: 4 + 4 + 12 + 96 = **116**.
 
 > Counter/predicate-gated states and terminal short-circuits (`take(n)` is the
 > canonical counting FSM). `takeUntil`/`skipUntil` add a notifier input symbol.
+> See [docs/10-filtering-family.md](10-filtering-family.md).
 
 ## Session 5 — Distinctness, existence & aggregation (14)
 
@@ -136,12 +138,15 @@ per-operator checklist below; each real operator file is ticked exactly once.
 
 Ticked as each is completed. (S1–S2 done.)
 
-**Done (20):**
+**Done (34):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
   reduce ✅, mergeScan ✅, switchScan ✅, partition ✅, materialize ✅,
   dematerialize ✅
+- *S4:* take ✅, takeLast ✅, takeWhile ✅, takeUntil ✅, skip ✅, skipLast ✅,
+  skipWhile ✅, skipUntil ✅, first ✅, last ✅, elementAt ✅, single ✅,
+  ignoreElements ✅, defaultIfEmpty ✅
 
-**Remaining (96):** see sessions 4–10 above. Each session's doc will tick its
+**Remaining (82):** see sessions 5–10 above. Each session's doc will tick its
 operators here as they land.
