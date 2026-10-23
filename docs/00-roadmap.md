@@ -29,7 +29,9 @@ shared state-machine shape.
 - [x] **Session 7** — Combination operators — *14 operators* — DONE
 - [x] **Session 8** — Time-based operators — *16 operators* — DONE
 - [x] **Session 9** — Buffering & windowing — *9 operators* — DONE
-- [ ] Session 10 — see below — *17 operators remaining*
+- [x] **Session 10** — Error handling, repetition & multicasting — *17 operators* — DONE
+
+🎉 **ALL 113 PUBLIC OPERATORS COMPLETE.** 271 marble tests passing.
 
 Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 9 + 17 = **116**
 tickets, covering the **113** distinct public operator files (a few names —
@@ -127,7 +129,7 @@ files; and the deprecated `flatMap` alias of `mergeMap` is picked up in S10).
 > recursive mergeMap. See
 > [docs/15-buffering-windowing-family.md](15-buffering-windowing-family.md).
 
-## Session 10 — Error handling, repetition & multicasting (17)
+## Session 10 — Error handling, repetition & multicasting (17) — DONE
 
 `catchError`, `retry`, `retryWhen`, `repeat`, `repeatWhen`,
 `onErrorResumeNextWith`, `finalize`, `flatMap` (mergeMap alias), `share`,
@@ -148,11 +150,11 @@ Counts above sum to slightly more than 108 because a few operators are listed as
 cross-references, not double-counts. The authoritative tracking is the
 per-operator checklist below; each real operator file is ticked exactly once.
 
-## Master checklist (116 operators)
+## Master checklist (113 operators) — ✅ COMPLETE
 
-Ticked as each is completed. (S1–S2 done.)
+All 113 distinct public operator files analyzed across 10 sessions.
 
-**Done (96):**
+**Done (113):**
 - *S1:* scan ✅, distinctUntilChanged ✅, debounceTime ✅, throttleTime ✅
 - *S2:* throttleTime-trailing ✅, pairwise ✅, bufferCount ✅, withLatestFrom ✅
 - *S3:* map ✅, mapTo ✅, pluck ✅, filter ✅, tap ✅, scan-seedless ✅,
@@ -175,8 +177,9 @@ Ticked as each is completed. (S1–S2 done.)
   timestamp ✅, timeout ✅, timeoutWith ✅, observeOn ✅, subscribeOn ✅
 - *S9:* buffer ✅, bufferToggle ✅, bufferWhen ✅, window ✅, windowCount ✅,
   windowToggle ✅, windowWhen ✅, groupBy ✅, expand ✅
+- *S10:* catchError ✅, retry ✅, retryWhen ✅, repeat ✅, repeatWhen ✅,
+  onErrorResumeNextWith ✅, finalize ✅, flatMap ✅, share ✅, shareReplay ✅,
+  connect ✅, multicast ✅, publish ✅, publishBehavior ✅, publishLast ✅,
+  publishReplay ✅, refCount ✅
 
-**Remaining (17):** see session 10 above — catchError, retry, retryWhen,
-repeat, repeatWhen, onErrorResumeNextWith, finalize, flatMap, share,
-shareReplay, connect, multicast, publish, publishBehavior, publishLast,
-publishReplay, refCount.
+**Remaining: none — all 113 operators complete. 🎉**

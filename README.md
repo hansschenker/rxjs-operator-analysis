@@ -63,9 +63,13 @@ Edge-label convention throughout is standard Mealy notation: **`input / output`*
 | 13 | **Combination family** (14): `combineLatest`/`combineLatestWith`/`combineLatestAll`/`combineAll`, `zip`/`zipWith`/`zipAll`, `concat`/`concatWith`, `merge`/`mergeWith`, `race`/`raceWith`, `withLatestFrom` (revisit) | N input alphabets: latest-value slots, per-source queues, sequential/interleave, and a winner-lock | [docs/13-combination-family.md](docs/13-combination-family.md) | [tests/55–59](tests/) |
 | 14 | **Time-based family** (16): `delay`/`delayWhen`, `sampleTime`/`sample`, `auditTime`/`audit`, `throttle`/`debounce`, `bufferTime`/`windowTime`, `timestamp`/`timeInterval`, `timeout`/`timeoutWith`, `observeOn`/`subscribeOn` | the `tick` input symbol at scale: fixed delay, snapshot-on-tick, lead/trail silence windows, time buffering, metadata tagging, watchdog, and scheduling | [docs/14-time-family.md](docs/14-time-family.md) | [tests/60–67](tests/) |
 | 15 | **Buffering & windowing family** (9): `buffer`/`bufferWhen`/`bufferToggle`, `window`/`windowCount`/`windowWhen`/`windowToggle`, `groupBy`, `expand` | accumulate-then-flush on a boundary; the buffer→array / window→Observable duality; overlapping buffers; keyed partition; recursive `mergeMap` | [docs/15-buffering-windowing-family.md](docs/15-buffering-windowing-family.md) | [tests/68–73](tests/) |
+| 16 | **Error, repeat & multicast family** (17): `catchError`, `onErrorResumeNextWith`, `finalize`, `retry`/`retryWhen`, `repeat`/`repeatWhen`, `flatMap`, `share`/`shareReplay`, `connect`/`multicast`/`refCount`, `publish`/`publishBehavior`/`publishLast`/`publishReplay` | error recovery, resubscription loops (source as a restartable sub-machine), and one Cold⇄Hot multicast skeleton parameterised by Subject type + connect policy | [docs/16-error-repeat-multicast-family.md](docs/16-error-repeat-multicast-family.md) | [tests/74–78](tests/) |
 
 See [docs/00-roadmap.md](docs/00-roadmap.md) for the full 10-session plan
 covering all public RxJS 7.x operators.
+
+> ✅ **Project complete** — all **113** distinct public RxJS 7.x operators
+> analyzed across 10 sessions, with **271** passing marble tests.
 
 The four span a deliberate difficulty gradient:
 
@@ -86,8 +90,9 @@ npm test            # single run
 npm run test:watch  # watch mode
 ```
 
-All rows across all analyzed operators: **251 passing marble tests** (96
-operators; sessions 1–9 of the 10-session roadmap — 17 remain for session 10).
+All rows across all analyzed operators: **271 passing marble tests** across
+**113 operators** — the complete public RxJS 7.x operator surface, all 10
+sessions done.
 
 ## Methodology lesson: let the machine validate the model
 
