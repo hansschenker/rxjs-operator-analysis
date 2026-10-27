@@ -4,6 +4,18 @@
 > short-circuit on a deciding value (existence), fold the whole stream into one
 > value (aggregation), or bracket the stream with extra values
 > (prepend/append).
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`distinct`](operators/distinct.md) ·
+> [`distinctUntilKeyChanged`](operators/distinctUntilKeyChanged.md) ·
+> [`every`](operators/every.md) · [`find`](operators/find.md) ·
+> [`findIndex`](operators/findIndex.md) · [`isEmpty`](operators/isEmpty.md) ·
+> [`count`](operators/count.md) · [`max`](operators/max.md) ·
+> [`min`](operators/min.md) · [`toArray`](operators/toArray.md) ·
+> [`sequenceEqual`](operators/sequenceEqual.md) ·
+> [`throwIfEmpty`](operators/throwIfEmpty.md) ·
+> [`startWith`](operators/startWith.md) · [`endWith`](operators/endWith.md).
 
 Operators covered:
 
