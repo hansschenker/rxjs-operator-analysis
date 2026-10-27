@@ -5,6 +5,20 @@
 > *restartable* sub-machine), and **multicasting** (one shared-subscription
 > skeleton parameterised by a Subject type and a connect policy). Plus the
 > `flatMap` alias of `mergeMap`.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`catchError`](operators/catchError.md) ·
+> [`onErrorResumeNextWith`](operators/onErrorResumeNextWith.md) ·
+> [`finalize`](operators/finalize.md) · [`retry`](operators/retry.md) ·
+> [`repeat`](operators/repeat.md) · [`retryWhen`](operators/retryWhen.md) ·
+> [`repeatWhen`](operators/repeatWhen.md) · [`flatMap`](operators/flatMap.md) ·
+> [`share`](operators/share.md) · [`shareReplay`](operators/shareReplay.md) ·
+> [`connect`](operators/connect.md) · [`multicast`](operators/multicast.md) ·
+> [`refCount`](operators/refCount.md) · [`publish`](operators/publish.md) ·
+> [`publishBehavior`](operators/publishBehavior.md) ·
+> [`publishReplay`](operators/publishReplay.md) ·
+> [`publishLast`](operators/publishLast.md).
 
 Operators covered:
 
