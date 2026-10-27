@@ -4,6 +4,17 @@
 > output. This is the "counting FSM" session: `take(n)` is the canonical counter
 > machine, and `takeUntil`/`skipUntil` reintroduce a **notifier input symbol**
 > (a second stream, as in Session 2's `withLatestFrom`).
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`take`](operators/take.md) · [`takeLast`](operators/takeLast.md) ·
+> [`takeWhile`](operators/takeWhile.md) · [`takeUntil`](operators/takeUntil.md) ·
+> [`skip`](operators/skip.md) · [`skipLast`](operators/skipLast.md) ·
+> [`skipWhile`](operators/skipWhile.md) · [`skipUntil`](operators/skipUntil.md) ·
+> [`first`](operators/first.md) · [`last`](operators/last.md) ·
+> [`elementAt`](operators/elementAt.md) · [`single`](operators/single.md) ·
+> [`ignoreElements`](operators/ignoreElements.md) ·
+> [`defaultIfEmpty`](operators/defaultIfEmpty.md).
 
 Operators covered:
 
