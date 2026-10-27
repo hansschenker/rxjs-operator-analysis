@@ -20,7 +20,7 @@ operators has an individual analysis linked to its individual test.
 | **S6 Flattening** | 12 | ✅ **done — see below** |
 | **S7 Combination** | 14 | ✅ **done — see below** |
 | **S8 Time** | 16 | ✅ **done — see below** |
-| S9 Buffering/Windowing | 9 | ⏳ pending |
+| **S9 Buffering/Windowing** | 9 | ✅ **done — see below** |
 | S10 Error/Repeat/Multicast | 17 | ⏳ pending |
 
 ### S3 — Transformation family (12 operators)
@@ -168,3 +168,24 @@ duration-selector machines with `timer(d)` wired in. The former bundled tests
 
 > The family overview remains at
 > [`docs/14-time-family.md`](../14-time-family.md).
+
+### S9 — Buffering & windowing (9 operators)
+
+The buffer→array / window→Observable duality, driven by a boundary signal, plus
+keyed partition (`groupBy`) and recursive flatten (`expand`). The former bundled
+tests (`68`–`70`, two operators each) were split into one file per operator.
+
+| Operator | Boundary | Doc | Test |
+|---|---|---|---|
+| `buffer` | external notifier → array | [buffer.md](buffer.md) | [tests/68a-buffer.test.ts](../../tests/68a-buffer.test.ts) |
+| `bufferWhen` | per-cycle selector → array | [bufferWhen.md](bufferWhen.md) | [tests/68b-bufferWhen.test.ts](../../tests/68b-bufferWhen.test.ts) |
+| `window` | external boundary → Observable | [window.md](window.md) | [tests/69a-window.test.ts](../../tests/69a-window.test.ts) |
+| `windowWhen` | per-cycle selector → Observable | [windowWhen.md](windowWhen.md) | [tests/69b-windowWhen.test.ts](../../tests/69b-windowWhen.test.ts) |
+| `bufferToggle` | openings + closings → arrays | [bufferToggle.md](bufferToggle.md) | [tests/70a-bufferToggle.test.ts](../../tests/70a-bufferToggle.test.ts) |
+| `windowToggle` | openings + closings → Observables | [windowToggle.md](windowToggle.md) | [tests/70b-windowToggle.test.ts](../../tests/70b-windowToggle.test.ts) |
+| `windowCount` | count boundary → Observables | [windowCount.md](windowCount.md) | [tests/71-windowCount.test.ts](../../tests/71-windowCount.test.ts) |
+| `groupBy` | keyed partition | [groupBy.md](groupBy.md) | [tests/72-groupBy.test.ts](../../tests/72-groupBy.test.ts) |
+| `expand` | recursive flatten | [expand.md](expand.md) | [tests/73-expand.test.ts](../../tests/73-expand.test.ts) |
+
+> The family overview remains at
+> [`docs/15-buffering-windowing-family.md`](../15-buffering-windowing-family.md).
