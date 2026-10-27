@@ -21,7 +21,14 @@ operators has an individual analysis linked to its individual test.
 | **S7 Combination** | 14 | ✅ **done — see below** |
 | **S8 Time** | 16 | ✅ **done — see below** |
 | **S9 Buffering/Windowing** | 9 | ✅ **done — see below** |
-| S10 Error/Repeat/Multicast | 17 | ⏳ pending |
+| **S10 Error/Repeat/Multicast** | 17 | ✅ **done — see below** |
+
+🎉 **All 113 public operators now have dedicated per-operator analyses** — the
+per-operator docs in `docs/operators/` (107 files, including the `scan-seedless`
+variant) plus the 8 foundations in `docs/01-…08-`, each linked to its own
+dedicated test file. Verified: a `comm` diff of the installed `rxjs@7.8.2`
+operator surface against the set of dedicated docs shows **zero operators
+without a doc**.
 
 ### S3 — Transformation family (12 operators)
 
@@ -189,3 +196,33 @@ tests (`68`–`70`, two operators each) were split into one file per operator.
 
 > The family overview remains at
 > [`docs/15-buffering-windowing-family.md`](../15-buffering-windowing-family.md).
+
+### S10 — Error handling, repetition & multicasting (17 operators)
+
+Three clusters: error recovery, resubscription loops (source as a restartable
+sub-machine), and one Cold⇄Hot multicast skeleton parameterised by Subject type
++ connect policy. Plus the `flatMap` alias of `mergeMap`. The former bundled
+tests (`74`, `75`, `77`, `78`) were split into one file per operator.
+
+| Operator | Cluster | Doc | Test |
+|---|---|---|---|
+| `catchError` | error recovery | [catchError.md](catchError.md) | [tests/74a-catchError.test.ts](../../tests/74a-catchError.test.ts) |
+| `onErrorResumeNextWith` | error recovery | [onErrorResumeNextWith.md](onErrorResumeNextWith.md) | [tests/74b-onErrorResumeNextWith.test.ts](../../tests/74b-onErrorResumeNextWith.test.ts) |
+| `finalize` | error recovery (teardown) | [finalize.md](finalize.md) | [tests/74c-finalize.test.ts](../../tests/74c-finalize.test.ts) |
+| `retry` | resubscription loop | [retry.md](retry.md) | [tests/75a-retry.test.ts](../../tests/75a-retry.test.ts) |
+| `repeat` | resubscription loop | [repeat.md](repeat.md) | [tests/75b-repeat.test.ts](../../tests/75b-repeat.test.ts) |
+| `retryWhen` | resubscription loop | [retryWhen.md](retryWhen.md) | [tests/75c-retryWhen.test.ts](../../tests/75c-retryWhen.test.ts) |
+| `repeatWhen` | resubscription loop | [repeatWhen.md](repeatWhen.md) | [tests/75d-repeatWhen.test.ts](../../tests/75d-repeatWhen.test.ts) |
+| `flatMap` | alias of `mergeMap` | [flatMap.md](flatMap.md) | [tests/76-flatMap.test.ts](../../tests/76-flatMap.test.ts) |
+| `share` | multicast | [share.md](share.md) | [tests/77a-share.test.ts](../../tests/77a-share.test.ts) |
+| `shareReplay` | multicast | [shareReplay.md](shareReplay.md) | [tests/77b-shareReplay.test.ts](../../tests/77b-shareReplay.test.ts) |
+| `connect` | multicast | [connect.md](connect.md) | [tests/78a-connect.test.ts](../../tests/78a-connect.test.ts) |
+| `multicast` | multicast | [multicast.md](multicast.md) | [tests/78c-multicast.test.ts](../../tests/78c-multicast.test.ts) |
+| `refCount` | multicast | [refCount.md](refCount.md) | [tests/78d-refCount.test.ts](../../tests/78d-refCount.test.ts) |
+| `publish` | multicast | [publish.md](publish.md) | [tests/78b-publish.test.ts](../../tests/78b-publish.test.ts) |
+| `publishBehavior` | multicast | [publishBehavior.md](publishBehavior.md) | [tests/78e-publishBehavior.test.ts](../../tests/78e-publishBehavior.test.ts) |
+| `publishReplay` | multicast | [publishReplay.md](publishReplay.md) | [tests/78f-publishReplay.test.ts](../../tests/78f-publishReplay.test.ts) |
+| `publishLast` | multicast | [publishLast.md](publishLast.md) | [tests/78g-publishLast.test.ts](../../tests/78g-publishLast.test.ts) |
+
+> The family overview remains at
+> [`docs/16-error-repeat-multicast-family.md`](../16-error-repeat-multicast-family.md).
