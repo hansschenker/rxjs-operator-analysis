@@ -15,7 +15,7 @@ operators has an individual analysis linked to its individual test.
 |---|---|---|
 | S1–S2 (foundations) | 8 | ✅ `docs/01-…08-` (already individual) |
 | **S3 Transformation** | 12 | ✅ **done — see below** |
-| S4 Filtering | 14 | ⏳ pending |
+| **S4 Filtering** | 14 | ✅ **done — see below** |
 | S5 Aggregation | 14 | ⏳ pending |
 | S6 Flattening | 12 | ⏳ pending |
 | S7 Combination | 14 | ⏳ pending |
@@ -42,3 +42,25 @@ operators has an individual analysis linked to its individual test.
 
 > The family overview remains at
 > [`docs/09-transformation-family.md`](../09-transformation-family.md).
+
+### S4 — Filtering & conditional emission (14 operators)
+
+| Operator | Doc | Test |
+|---|---|---|
+| `take` | [take.md](take.md) | [tests/21-take.test.ts](../../tests/21-take.test.ts) |
+| `takeLast` | [takeLast.md](takeLast.md) | [tests/22-takeLast.test.ts](../../tests/22-takeLast.test.ts) |
+| `takeWhile` | [takeWhile.md](takeWhile.md) | [tests/23-takeWhile.test.ts](../../tests/23-takeWhile.test.ts) |
+| `takeUntil` | [takeUntil.md](takeUntil.md) | [tests/24-takeUntil.test.ts](../../tests/24-takeUntil.test.ts) |
+| `skip` | [skip.md](skip.md) | [tests/25-skip.test.ts](../../tests/25-skip.test.ts) |
+| `skipLast` | [skipLast.md](skipLast.md) | [tests/26-skipLast.test.ts](../../tests/26-skipLast.test.ts) |
+| `skipWhile` | [skipWhile.md](skipWhile.md) | [tests/27-skipWhile.test.ts](../../tests/27-skipWhile.test.ts) |
+| `skipUntil` | [skipUntil.md](skipUntil.md) | [tests/28-skipUntil.test.ts](../../tests/28-skipUntil.test.ts) |
+| `first` | [first.md](first.md) | [tests/29-first.test.ts](../../tests/29-first.test.ts) |
+| `last` | [last.md](last.md) | [tests/30-last.test.ts](../../tests/30-last.test.ts) |
+| `elementAt` | [elementAt.md](elementAt.md) | [tests/31-elementAt.test.ts](../../tests/31-elementAt.test.ts) |
+| `single` | [single.md](single.md) | [tests/32-single.test.ts](../../tests/32-single.test.ts) |
+| `ignoreElements` | [ignoreElements.md](ignoreElements.md) | [tests/33-ignoreElements.test.ts](../../tests/33-ignoreElements.test.ts) |
+| `defaultIfEmpty` | [defaultIfEmpty.md](defaultIfEmpty.md) | [tests/34-defaultIfEmpty.test.ts](../../tests/34-defaultIfEmpty.test.ts) |
+
+> The family overview remains at
+> [`docs/10-filtering-family.md`](../10-filtering-family.md).
