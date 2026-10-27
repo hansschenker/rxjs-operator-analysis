@@ -16,7 +16,7 @@ operators has an individual analysis linked to its individual test.
 | S1–S2 (foundations) | 8 | ✅ `docs/01-…08-` (already individual) |
 | **S3 Transformation** | 12 | ✅ **done — see below** |
 | **S4 Filtering** | 14 | ✅ **done — see below** |
-| S5 Aggregation | 14 | ⏳ pending |
+| **S5 Aggregation** | 14 | ✅ **done — see below** |
 | S6 Flattening | 12 | ⏳ pending |
 | S7 Combination | 14 | ⏳ pending |
 | S8 Time | 16 | ⏳ pending |
@@ -64,3 +64,25 @@ operators has an individual analysis linked to its individual test.
 
 > The family overview remains at
 > [`docs/10-filtering-family.md`](../10-filtering-family.md).
+
+### S5 — Distinctness, existence & aggregation (14 operators)
+
+| Operator | Doc | Test |
+|---|---|---|
+| `distinct` | [distinct.md](distinct.md) | [tests/35-distinct.test.ts](../../tests/35-distinct.test.ts) |
+| `distinctUntilKeyChanged` | [distinctUntilKeyChanged.md](distinctUntilKeyChanged.md) | [tests/36-distinctUntilKeyChanged.test.ts](../../tests/36-distinctUntilKeyChanged.test.ts) |
+| `every` | [every.md](every.md) | [tests/37-every.test.ts](../../tests/37-every.test.ts) |
+| `find` | [find.md](find.md) | [tests/38-find.test.ts](../../tests/38-find.test.ts) |
+| `findIndex` | [findIndex.md](findIndex.md) | [tests/39-findIndex.test.ts](../../tests/39-findIndex.test.ts) |
+| `isEmpty` | [isEmpty.md](isEmpty.md) | [tests/40-isEmpty.test.ts](../../tests/40-isEmpty.test.ts) |
+| `count` | [count.md](count.md) | [tests/41-count.test.ts](../../tests/41-count.test.ts) |
+| `max` | [max.md](max.md) | [tests/42-max.test.ts](../../tests/42-max.test.ts) |
+| `min` | [min.md](min.md) | [tests/43-min.test.ts](../../tests/43-min.test.ts) |
+| `toArray` | [toArray.md](toArray.md) | [tests/44-toArray.test.ts](../../tests/44-toArray.test.ts) |
+| `sequenceEqual` | [sequenceEqual.md](sequenceEqual.md) | [tests/45-sequenceEqual.test.ts](../../tests/45-sequenceEqual.test.ts) |
+| `throwIfEmpty` | [throwIfEmpty.md](throwIfEmpty.md) | [tests/46-throwIfEmpty.test.ts](../../tests/46-throwIfEmpty.test.ts) |
+| `startWith` | [startWith.md](startWith.md) | [tests/47-startWith.test.ts](../../tests/47-startWith.test.ts) |
+| `endWith` | [endWith.md](endWith.md) | [tests/48-endWith.test.ts](../../tests/48-endWith.test.ts) |
+
+> The family overview remains at
+> [`docs/11-aggregation-family.md`](../11-aggregation-family.md).
