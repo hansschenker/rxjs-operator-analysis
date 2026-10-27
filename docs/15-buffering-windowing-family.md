@@ -5,6 +5,15 @@
 > Plus `groupBy` (partition into keyed sub-streams) and `expand` (recursive
 > `mergeMap`). The buffer/window pair is a clean duality: *same boundary logic,
 > different container*.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`buffer`](operators/buffer.md) · [`bufferWhen`](operators/bufferWhen.md) ·
+> [`window`](operators/window.md) · [`windowWhen`](operators/windowWhen.md) ·
+> [`bufferToggle`](operators/bufferToggle.md) ·
+> [`windowToggle`](operators/windowToggle.md) ·
+> [`windowCount`](operators/windowCount.md) · [`groupBy`](operators/groupBy.md) ·
+> [`expand`](operators/expand.md).
 
 Operators covered:
 
