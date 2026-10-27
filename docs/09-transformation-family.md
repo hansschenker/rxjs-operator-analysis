@@ -3,6 +3,15 @@
 > 12 operators that transform the value stream. They split into four sub-shapes
 > of Mealy machine, from the trivial single-state projector to the
 > notification-reifying `materialize`/`dematerialize` pair.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`map`](operators/map.md) · [`mapTo`](operators/mapTo.md) ·
+> [`pluck`](operators/pluck.md) · [`filter`](operators/filter.md) ·
+> [`tap`](operators/tap.md) · [`scan` seedless](operators/scan-seedless.md) ·
+> [`reduce`](operators/reduce.md) · [`mergeScan`](operators/mergeScan.md) ·
+> [`switchScan`](operators/switchScan.md) · [`partition`](operators/partition.md) ·
+> [`materialize`](operators/materialize.md) · [`dematerialize`](operators/dematerialize.md).
 
 Operators covered:
 
