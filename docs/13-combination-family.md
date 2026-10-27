@@ -4,6 +4,18 @@
 > Session 2's `withLatestFrom` (which had exactly two input alphabets, one of
 > them "sampled") to arbitrary N, and classifies the strategies by the **shape
 > of state** each must keep.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`combineLatest`](operators/combineLatest.md) ·
+> [`combineLatestWith`](operators/combineLatestWith.md) ·
+> [`combineLatestAll`](operators/combineLatestAll.md) ·
+> [`combineAll`](operators/combineAll.md) · [`zip`](operators/zip.md) ·
+> [`zipWith`](operators/zipWith.md) · [`zipAll`](operators/zipAll.md) ·
+> [`concat`](operators/concat.md) · [`concatWith`](operators/concatWith.md) ·
+> [`merge`](operators/merge.md) · [`mergeWith`](operators/mergeWith.md) ·
+> [`race`](operators/race.md) · [`raceWith`](operators/raceWith.md) ·
+> [`withLatestFrom`](08-withLatestFrom.md) (revisit).
 
 Operators covered:
 

@@ -18,7 +18,7 @@ operators has an individual analysis linked to its individual test.
 | **S4 Filtering** | 14 | ✅ **done — see below** |
 | **S5 Aggregation** | 14 | ✅ **done — see below** |
 | **S6 Flattening** | 12 | ✅ **done — see below** |
-| S7 Combination | 14 | ⏳ pending |
+| **S7 Combination** | 14 | ✅ **done — see below** |
 | S8 Time | 16 | ⏳ pending |
 | S9 Buffering/Windowing | 9 | ⏳ pending |
 | S10 Error/Repeat/Multicast | 17 | ⏳ pending |
@@ -111,3 +111,32 @@ operator.
 
 > The family overview remains at
 > [`docs/12-flattening-family.md`](../12-flattening-family.md).
+
+### S7 — Combination operators (14 operators)
+
+N input streams merged by one of five strategies. The `*With` forms are the
+pipeable equivalents of the static constructors; the `*All` forms are two-phase
+higher-order flatteners. `withLatestFrom` is a revisit — its dedicated doc is
+[`docs/08-withLatestFrom.md`](../08-withLatestFrom.md) (asymmetric
+latest-slots). The former bundled tests (`55`–`59`) were split into one file per
+operator.
+
+| Operator | Strategy | Doc | Test |
+|---|---|---|---|
+| `combineLatest` | latest-slots | [combineLatest.md](combineLatest.md) | [tests/55a-combineLatest.test.ts](../../tests/55a-combineLatest.test.ts) |
+| `combineLatestWith` | latest-slots (pipeable) | [combineLatestWith.md](combineLatestWith.md) | [tests/55b-combineLatestWith.test.ts](../../tests/55b-combineLatestWith.test.ts) |
+| `combineLatestAll` | latest-slots (higher-order) | [combineLatestAll.md](combineLatestAll.md) | [tests/59a-combineLatestAll.test.ts](../../tests/59a-combineLatestAll.test.ts) |
+| `combineAll` | latest-slots (alias) | [combineAll.md](combineAll.md) | [tests/59b-combineAll.test.ts](../../tests/59b-combineAll.test.ts) |
+| `zip` | per-source queue | [zip.md](zip.md) | [tests/56a-zip.test.ts](../../tests/56a-zip.test.ts) |
+| `zipWith` | per-source queue (pipeable) | [zipWith.md](zipWith.md) | [tests/56b-zipWith.test.ts](../../tests/56b-zipWith.test.ts) |
+| `zipAll` | per-source queue (higher-order) | [zipAll.md](zipAll.md) | [tests/59c-zipAll.test.ts](../../tests/59c-zipAll.test.ts) |
+| `concat` | sequential | [concat.md](concat.md) | [tests/57a-concat.test.ts](../../tests/57a-concat.test.ts) |
+| `concatWith` | sequential (pipeable) | [concatWith.md](concatWith.md) | [tests/57b-concatWith.test.ts](../../tests/57b-concatWith.test.ts) |
+| `merge` | interleave | [merge.md](merge.md) | [tests/57c-merge.test.ts](../../tests/57c-merge.test.ts) |
+| `mergeWith` | interleave (pipeable) | [mergeWith.md](mergeWith.md) | [tests/57d-mergeWith.test.ts](../../tests/57d-mergeWith.test.ts) |
+| `race` | winner-lock | [race.md](race.md) | [tests/58a-race.test.ts](../../tests/58a-race.test.ts) |
+| `raceWith` | winner-lock (pipeable) | [raceWith.md](raceWith.md) | [tests/58b-raceWith.test.ts](../../tests/58b-raceWith.test.ts) |
+| `withLatestFrom` | asymmetric latest-slots (revisit) | [docs/08-withLatestFrom.md](../08-withLatestFrom.md) | [tests/08-withLatestFrom.test.ts](../../tests/08-withLatestFrom.test.ts) |
+
+> The family overview remains at
+> [`docs/13-combination-family.md`](../13-combination-family.md).
