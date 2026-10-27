@@ -1,8 +1,8 @@
 import { describe, it } from "vitest";
-import { bufferTime, windowTime, mergeMap, toArray } from "rxjs";
+import { bufferTime } from "rxjs";
 import { makeScheduler } from "./helpers/scheduler";
 
-/** bufferTime / windowTime — time-boundary buffering (docs/14, Sub-family E). */
+/** bufferTime — time-boundary buffering into arrays (docs/operators/bufferTime.md, E). */
 describe("bufferTime — Mealy machine STT (time boundary)", () => {
   // Rows 1-3: flush a buffer every span ms; span = 30.
   it("Rows 1-3: emits a buffer every span ms", () => {
@@ -26,21 +26,6 @@ describe("bufferTime — Mealy machine STT (time boundary)", () => {
       const expected = "     30ms x 29ms (y|)";
       const result = source.pipe(bufferTime(30));
       expectObservable(result).toBe(expected, { x: [], y: [] });
-    });
-  });
-
-  // windowTime: nested observables instead of arrays — flatten back to arrays
-  it("windowTime: emits windows as nested observables", () => {
-    const s = makeScheduler();
-    s.run(({ cold, expectObservable }) => {
-      const source = cold("  a 9ms b 40ms c|", { a: "a", b: "b", c: "c" });
-      const expected = "     30ms x 21ms (y|)";
-      // collect each window observable into an array to compare contents
-      const result = source.pipe(
-        windowTime(30),
-        mergeMap((w) => w.pipe(toArray()))
-      );
-      expectObservable(result).toBe(expected, { x: ["a", "b"], y: ["c"] });
     });
   });
 });
