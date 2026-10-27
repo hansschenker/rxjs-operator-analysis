@@ -17,7 +17,7 @@ operators has an individual analysis linked to its individual test.
 | **S3 Transformation** | 12 | ✅ **done — see below** |
 | **S4 Filtering** | 14 | ✅ **done — see below** |
 | **S5 Aggregation** | 14 | ✅ **done — see below** |
-| S6 Flattening | 12 | ⏳ pending |
+| **S6 Flattening** | 12 | ✅ **done — see below** |
 | S7 Combination | 14 | ⏳ pending |
 | S8 Time | 16 | ⏳ pending |
 | S9 Buffering/Windowing | 9 | ⏳ pending |
@@ -86,3 +86,28 @@ operators has an individual analysis linked to its individual test.
 
 > The family overview remains at
 > [`docs/11-aggregation-family.md`](../11-aggregation-family.md).
+
+### S6 — Higher-order flattening (12 operators)
+
+One Mealy skeleton, four δ policies (run / queue / cancel / drop). Note: the
+`*All` and `*MapTo` alias tests were split out of the former bundled
+`tests/53-all-aliases` / `tests/54-mapTo-aliases` files into one file per
+operator.
+
+| Operator | Policy | Doc | Test |
+|---|---|---|---|
+| `mergeMap` | merge (run) | [mergeMap.md](mergeMap.md) | [tests/49-mergeMap.test.ts](../../tests/49-mergeMap.test.ts) |
+| `concatMap` | concat (queue) | [concatMap.md](concatMap.md) | [tests/50-concatMap.test.ts](../../tests/50-concatMap.test.ts) |
+| `switchMap` | switch (cancel) | [switchMap.md](switchMap.md) | [tests/51-switchMap.test.ts](../../tests/51-switchMap.test.ts) |
+| `exhaustMap` | exhaust (drop) | [exhaustMap.md](exhaustMap.md) | [tests/52-exhaustMap.test.ts](../../tests/52-exhaustMap.test.ts) |
+| `mergeAll` | merge (identity) | [mergeAll.md](mergeAll.md) | [tests/53a-mergeAll.test.ts](../../tests/53a-mergeAll.test.ts) |
+| `concatAll` | concat (identity) | [concatAll.md](concatAll.md) | [tests/53b-concatAll.test.ts](../../tests/53b-concatAll.test.ts) |
+| `switchAll` | switch (identity) | [switchAll.md](switchAll.md) | [tests/53c-switchAll.test.ts](../../tests/53c-switchAll.test.ts) |
+| `exhaustAll` | exhaust (identity) | [exhaustAll.md](exhaustAll.md) | [tests/53d-exhaustAll.test.ts](../../tests/53d-exhaustAll.test.ts) |
+| `exhaust` | exhaust (alias) | [exhaust.md](exhaust.md) | [tests/53e-exhaust.test.ts](../../tests/53e-exhaust.test.ts) |
+| `mergeMapTo` | merge (fixed inner) | [mergeMapTo.md](mergeMapTo.md) | [tests/54a-mergeMapTo.test.ts](../../tests/54a-mergeMapTo.test.ts) |
+| `concatMapTo` | concat (fixed inner) | [concatMapTo.md](concatMapTo.md) | [tests/54b-concatMapTo.test.ts](../../tests/54b-concatMapTo.test.ts) |
+| `switchMapTo` | switch (fixed inner) | [switchMapTo.md](switchMapTo.md) | [tests/54c-switchMapTo.test.ts](../../tests/54c-switchMapTo.test.ts) |
+
+> The family overview remains at
+> [`docs/12-flattening-family.md`](../12-flattening-family.md).

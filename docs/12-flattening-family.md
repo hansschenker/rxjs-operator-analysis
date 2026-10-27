@@ -4,6 +4,17 @@
 > Observable**, subscribe to those inners, and flatten their emissions into one
 > output stream. The headline insight: **they are one machine skeleton with
 > four different δ (transition) policies** for managing inner subscriptions.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`mergeMap`](operators/mergeMap.md) · [`concatMap`](operators/concatMap.md) ·
+> [`switchMap`](operators/switchMap.md) ·
+> [`exhaustMap`](operators/exhaustMap.md) · [`mergeAll`](operators/mergeAll.md) ·
+> [`concatAll`](operators/concatAll.md) · [`switchAll`](operators/switchAll.md) ·
+> [`exhaustAll`](operators/exhaustAll.md) · [`exhaust`](operators/exhaust.md) ·
+> [`mergeMapTo`](operators/mergeMapTo.md) ·
+> [`concatMapTo`](operators/concatMapTo.md) ·
+> [`switchMapTo`](operators/switchMapTo.md).
 
 Operators covered:
 
