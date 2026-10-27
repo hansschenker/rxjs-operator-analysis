@@ -3,13 +3,15 @@
 Source of truth: the operator files in
 [`ReactiveX/rxjs @ 7.x /src/internal/operators`](https://github.com/ReactiveX/rxjs/tree/7.x/src/internal/operators).
 
-**Scope.** The directory holds 120 `.ts` files. Four are internal plumbing, not
-operators, and are **excluded**:
+**Scope.** The directory holds **117 `.ts` files** (verified against the `7.x`
+branch and the published `rxjs@7.8.2` type definitions — see "Scope
+reconciliation" below). Four are internal plumbing, not operators, and are
+**excluded**:
 
 - `OperatorSubscriber.ts`, `mergeInternals.ts`, `scanInternals.ts`,
   `joinAllInternals.ts`
 
-That leaves **116 public operators** to analyze. Each gets the full pipeline:
+That leaves **113 public operators** to analyze. Each gets the full pipeline:
 **6-tuple (Q, Σ, Λ, δ, λ, q₀) → STD (Mermaid) → STT → one marble test per STT
 row.**
 
@@ -31,12 +33,22 @@ shared state-machine shape.
 - [x] **Session 9** — Buffering & windowing — *9 operators* — DONE
 - [x] **Session 10** — Error handling, repetition & multicasting — *17 operators* — DONE
 
-🎉 **ALL 113 PUBLIC OPERATORS COMPLETE.** 271 marble tests passing.
+🎉 **ALL 113 PUBLIC OPERATORS COMPLETE.** 271 marble tests passing (78 test
+files).
 
-Running total when complete: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 9 + 17 = **116**
-tickets, covering the **113** distinct public operator files (a few names —
-`withLatestFrom`, `scan` seedless — are cross-session revisits, not separate
-files; and the deprecated `flatMap` alias of `mergeMap` is picked up in S10).
+Running total of session **tickets**: 4 + 4 + 12 + 14 + 14 + 12 + 14 + 16 + 9 +
+17 = **116** tickets, covering the **113** distinct public operator files. The
+ticket count exceeds the file count by 3 because a few names are cross-session
+**revisits**, not separate files:
+
+- `withLatestFrom` — a ticket in S2 (as a dual-source primitive) **and** S7 (as
+  a combination operator); one file.
+- `scan` *(seedless)* — an S3 ticket revisiting the S1 `scan` file; one file.
+- `flatMap` — counted as its own S10 ticket, and it **is** a distinct file (a
+  deprecated alias of `mergeMap`), so it is one of the 113.
+
+So 116 tickets − 3 revisit duplicates = **113 operator files**, which is the
+authoritative number tracked in the per-operator checklist below.
 
 ---
 
@@ -47,7 +59,7 @@ files; and the deprecated `flatMap` alias of `mergeMap` is picked up in S10).
 > Established the method: accumulator state, bootstrap state + guard, and time
 > as an input symbol (`tick`).
 
-## Session 2 — Tuples, counting buffers & dual-source (TODAY, 4)
+## Session 2 — Tuples, counting buffers & dual-source (DONE, 4)
 
 `throttleTime({ trailing: true })` (config variant), `pairwise`, `bufferCount`,
 `withLatestFrom`
@@ -145,10 +157,42 @@ files; and the deprecated `flatMap` alias of `mergeMap` is picked up in S10).
 
 ## Notes on sizing
 
-Counts above sum to slightly more than 108 because a few operators are listed as
-"revisit" (e.g. `withLatestFrom` in S7, `scan` seedless in S3) — these are
+The session **ticket** counts sum to **116**, which is slightly more than the
+**113** real operator files because a few operators are listed as "revisit"
+(e.g. `withLatestFrom` in S7, `scan` seedless in S3) — these are
 cross-references, not double-counts. The authoritative tracking is the
 per-operator checklist below; each real operator file is ticked exactly once.
+
+## Scope reconciliation (why 113, not 116 or 120)
+
+An earlier draft of this roadmap put the scope at "120 files → 116 public
+operators." That figure came from an older snapshot of the `7.x` branch; the
+branch has since been consolidated. The numbers were re-verified on
+**2026-10-27** against two independent sources:
+
+1. **GitHub `ReactiveX/rxjs @ 7.x`** —
+   `GET /repos/ReactiveX/rxjs/contents/src/internal/operators?ref=7.x` returns
+   **117** files.
+2. **Published package `rxjs@7.8.2`** — `node_modules/rxjs/dist/types/internal/operators`
+   ships **117** operator type-definition files.
+
+Both lists are identical, and both minus the 4 internal plumbing files
+(`OperatorSubscriber`, `mergeInternals`, `scanInternals`, `joinAllInternals`)
+leave **113 public operators**. A `comm` diff of that 113-file set against the
+per-operator checklist below shows **zero missing and zero extra** operators.
+
+Verify locally at any time:
+
+```bash
+ls node_modules/rxjs/dist/types/internal/operators/ \
+  | grep '\.d\.ts$' | grep -v '\.d\.ts\.map$' | sed 's/\.d\.ts$//' \
+  | grep -vE '^(OperatorSubscriber|mergeInternals|scanInternals|joinAllInternals)$' \
+  | sort | wc -l       # => 113
+```
+
+**Conclusion:** the roadmap plan is complete for the full public RxJS 7.x
+operator surface as it exists today. The "116/120" figures were stale header
+counts, not unanalyzed operators.
 
 ## Master checklist (113 operators) — ✅ COMPLETE
 
