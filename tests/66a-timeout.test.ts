@@ -1,8 +1,8 @@
 import { describe, it } from "vitest";
-import { timeout, timeoutWith, TimeoutError, of } from "rxjs";
+import { timeout, TimeoutError, of } from "rxjs";
 import { makeScheduler } from "./helpers/scheduler";
 
-/** timeout / timeoutWith — watchdog FSM (docs/14, Sub-family G). */
+/** timeout — watchdog FSM (docs/operators/timeout.md, Sub-family G). */
 describe("timeout — Mealy machine STT (watchdog)", () => {
   // Row 1: values arriving in time reset the watchdog and pass through.
   it("Row 1: values within the deadline pass through, resetting the timer", () => {
@@ -38,17 +38,6 @@ describe("timeout — Mealy machine STT (watchdog)", () => {
       const result = source.pipe(
         timeout({ each: 30, with: () => of("fallback") })
       );
-      expectObservable(result).toBe(expected, { a: "a", f: "fallback" });
-    });
-  });
-
-  // timeoutWith (deprecated): due time + fallback
-  it("timeoutWith: deprecated form switches to the fallback", () => {
-    const s = makeScheduler();
-    s.run(({ cold, expectObservable }) => {
-      const source = cold("  a 40ms b|", { a: "a", b: "b" });
-      const expected = "     a 29ms (f|)";
-      const result = source.pipe(timeoutWith(30, of("fallback")));
       expectObservable(result).toBe(expected, { a: "a", f: "fallback" });
     });
   });

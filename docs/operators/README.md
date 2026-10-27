@@ -19,7 +19,7 @@ operators has an individual analysis linked to its individual test.
 | **S5 Aggregation** | 14 | ✅ **done — see below** |
 | **S6 Flattening** | 12 | ✅ **done — see below** |
 | **S7 Combination** | 14 | ✅ **done — see below** |
-| S8 Time | 16 | ⏳ pending |
+| **S8 Time** | 16 | ✅ **done — see below** |
 | S9 Buffering/Windowing | 9 | ⏳ pending |
 | S10 Error/Repeat/Multicast | 17 | ⏳ pending |
 
@@ -140,3 +140,31 @@ operator.
 
 > The family overview remains at
 > [`docs/13-combination-family.md`](../13-combination-family.md).
+
+### S8 — Time-based operators (16 operators)
+
+All reuse the synthetic `tick` input symbol. The `*Time` operators are
+duration-selector machines with `timer(d)` wired in. The former bundled tests
+(`60`–`67`, two operators each) were split into one file per operator.
+
+| Operator | Sub-family | Doc | Test |
+|---|---|---|---|
+| `delay` | fixed delay | [delay.md](delay.md) | [tests/60a-delay.test.ts](../../tests/60a-delay.test.ts) |
+| `delayWhen` | fixed delay | [delayWhen.md](delayWhen.md) | [tests/60b-delayWhen.test.ts](../../tests/60b-delayWhen.test.ts) |
+| `sampleTime` | sample | [sampleTime.md](sampleTime.md) | [tests/61a-sampleTime.test.ts](../../tests/61a-sampleTime.test.ts) |
+| `sample` | sample | [sample.md](sample.md) | [tests/61b-sample.test.ts](../../tests/61b-sample.test.ts) |
+| `auditTime` | silence window (trailing) | [auditTime.md](auditTime.md) | [tests/62a-auditTime.test.ts](../../tests/62a-auditTime.test.ts) |
+| `audit` | silence window (trailing) | [audit.md](audit.md) | [tests/62b-audit.test.ts](../../tests/62b-audit.test.ts) |
+| `throttle` | silence window (leading) | [throttle.md](throttle.md) | [tests/63a-throttle.test.ts](../../tests/63a-throttle.test.ts) |
+| `debounce` | quiet period | [debounce.md](debounce.md) | [tests/63b-debounce.test.ts](../../tests/63b-debounce.test.ts) |
+| `bufferTime` | time buffering | [bufferTime.md](bufferTime.md) | [tests/64a-bufferTime.test.ts](../../tests/64a-bufferTime.test.ts) |
+| `windowTime` | time windowing | [windowTime.md](windowTime.md) | [tests/64b-windowTime.test.ts](../../tests/64b-windowTime.test.ts) |
+| `timestamp` | metadata tagging | [timestamp.md](timestamp.md) | [tests/65a-timestamp.test.ts](../../tests/65a-timestamp.test.ts) |
+| `timeInterval` | metadata tagging | [timeInterval.md](timeInterval.md) | [tests/65b-timeInterval.test.ts](../../tests/65b-timeInterval.test.ts) |
+| `timeout` | watchdog | [timeout.md](timeout.md) | [tests/66a-timeout.test.ts](../../tests/66a-timeout.test.ts) |
+| `timeoutWith` | watchdog (deprecated) | [timeoutWith.md](timeoutWith.md) | [tests/66b-timeoutWith.test.ts](../../tests/66b-timeoutWith.test.ts) |
+| `observeOn` | scheduling | [observeOn.md](observeOn.md) | [tests/67a-observeOn.test.ts](../../tests/67a-observeOn.test.ts) |
+| `subscribeOn` | scheduling | [subscribeOn.md](subscribeOn.md) | [tests/67b-subscribeOn.test.ts](../../tests/67b-subscribeOn.test.ts) |
+
+> The family overview remains at
+> [`docs/14-time-family.md`](../14-time-family.md).

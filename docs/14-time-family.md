@@ -6,6 +6,20 @@
 > with the ordinary source notifications. This is the largest family; it also
 > reveals that the `*Time` operators are just **duration-selector machines with
 > `timer(d)` wired in**.
+>
+> **This file is the family overview.** Each operator also has its own dedicated
+> analysis in [`docs/operators/`](operators/README.md):
+> [`delay`](operators/delay.md) · [`delayWhen`](operators/delayWhen.md) ·
+> [`sampleTime`](operators/sampleTime.md) · [`sample`](operators/sample.md) ·
+> [`auditTime`](operators/auditTime.md) · [`audit`](operators/audit.md) ·
+> [`throttle`](operators/throttle.md) · [`debounce`](operators/debounce.md) ·
+> [`bufferTime`](operators/bufferTime.md) ·
+> [`windowTime`](operators/windowTime.md) ·
+> [`timestamp`](operators/timestamp.md) ·
+> [`timeInterval`](operators/timeInterval.md) ·
+> [`timeout`](operators/timeout.md) · [`timeoutWith`](operators/timeoutWith.md) ·
+> [`observeOn`](operators/observeOn.md) ·
+> [`subscribeOn`](operators/subscribeOn.md).
 
 Operators covered:
 
